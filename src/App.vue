@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderVue title='Task Tracker'/>
-    <TasksVue :tasks="tasks" />    
+    <TasksVue @delete-task="deleteTask" :tasks="tasks" />    
   </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
   data() {
     return {
       tasks: []
+    }
+  },
+  methods: {
+    deleteTask(id) {
+      // console.log('Deleting task: ', id)
+      if (confirm('Are you sure?')) {
+        this.tasks = this.tasks.filter(task => task.id !== id)
+      }
     }
   },
   created() {
@@ -39,7 +47,7 @@ export default {
         id: 3,
         text: 'Food Shopping',
         day: 'March 3rd at 11:00am',
-        reminder: true
+        reminder: false
       }
     ]
   }

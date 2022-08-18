@@ -1,6 +1,6 @@
 <template>  
-    <div class="task">
-        <h3>{{task.text}}<i class="fas fa-times"></i></h3> <!-- we added a link tag on line 7 in index.html to get this icon -->
+    <div :class="[task.reminder ? 'reminder' : '', 'task']"> <!-- in addition to the 'task' class, this is a ternary operator to add another 'reminder' class-->
+        <h3>{{task.text}}<i @click="onDelete(task.id)" class="fas fa-times"></i></h3> <!-- we added a link tag on line 7 in index.html to get this icon -->
         <p>{{task.day}}</p>
     </div>
 </template>
@@ -11,6 +11,14 @@ export default {
   props: {
     task: Object
   },
+  methods: {
+    onDelete(id) {
+        // console.log(id)
+        this.$emit('delete-task', id)
+        // this defines a new prop event thing called '@delete-task' in the parent component... 
+        // ...where we can call a function defined in it (with this 'ID' argument), or repeat the process upwards to a higher component
+    }
+  }
 };
 </script>
 
