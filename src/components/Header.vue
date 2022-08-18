@@ -2,8 +2,8 @@
   <header>
     <h1>{{title}}</h1>
     <ButtonVue text="Add Task" color="green"/>
-    <ButtonVue text="Update Task" color="blue"/>
-    <ButtonVue text="Delete Task" color="red"/>
+    <!-- <ButtonVue text="Update Task" color="blue"/> -->
+    <!-- <ButtonVue text="Delete Task" color="red"/> -->
   </header>
 </template>
 

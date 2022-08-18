@@ -1,18 +1,21 @@
 <template>
   <div class="container">
     <HeaderVue title='Task Tracker'/>
+    <TasksVue :tasks="tasks" />    
   </div>
 </template>
 
 <script>
 import HeaderVue from './components/Header.vue'
+import TasksVue from './components/Tasks.vue'
 
 export default {
   name: "App",
   components: {
     // we must define any components that we import into our main App component here
-    HeaderVue
-    },
+    HeaderVue,
+    TasksVue
+},
   data() {
     return {
       tasks: []
