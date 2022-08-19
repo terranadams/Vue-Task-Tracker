@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <HeaderVue title='Task Tracker'/>
-    <AddTask @add-task='addTask'/>
+    <HeaderVue title='Task Tracker' @toggle-add-task="toggleAddTask"/>
+    <div v-if="showAddTask">
+      <AddTask @add-task='addTask'/>
+    </div>
     <TasksVue @delete-task="deleteTask" @toggle-reminder='toggleReminder' :tasks="tasks" />    
   </div>
 </template>
@@ -21,7 +23,8 @@ export default {
 },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask: false
     }
   },
   methods: {
@@ -40,6 +43,9 @@ export default {
       // we go through each object in the list, if the current task.id matches the argument id...
       // ...we use the spread operator syntax to update the reminder property in that object and return it, otherwise...
       // ...we just return the same unaltered list
+    },
+    toggleAddTask () {
+      this.showAddTask = !this.showAddTask
     }
   },
   created() {
