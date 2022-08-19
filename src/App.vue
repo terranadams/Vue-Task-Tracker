@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <HeaderVue title='Task Tracker'/>
+    <AddTask @add-task='addTask'/>
     <TasksVue @delete-task="deleteTask" @toggle-reminder='toggleReminder' :tasks="tasks" />    
   </div>
 </template>
@@ -8,13 +9,15 @@
 <script>
 import HeaderVue from './components/Header.vue'
 import TasksVue from './components/Tasks.vue'
+import AddTask from './components/AddTask.vue';
 
 export default {
   name: "App",
   components: {
     // we must define any components that we import into our main App component here
     HeaderVue,
-    TasksVue
+    TasksVue,
+    AddTask
 },
   data() {
     return {
@@ -22,6 +25,9 @@ export default {
     }
   },
   methods: {
+    addTask(task) {
+      this.tasks = [...this.tasks, task]
+    },
     deleteTask(id) {
       // console.log('Deleting task: ', id)
       // if (confirm('Are you sure?')) {
