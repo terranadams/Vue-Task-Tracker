@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderVue title='Task Tracker'/>
-    <TasksVue @delete-task="deleteTask" :tasks="tasks" />    
+    <TasksVue @delete-task="deleteTask" @toggle-reminder='toggleReminder' :tasks="tasks" />    
   </div>
 </template>
 
@@ -24,9 +24,16 @@ export default {
   methods: {
     deleteTask(id) {
       // console.log('Deleting task: ', id)
-      if (confirm('Are you sure?')) {
+      // if (confirm('Are you sure?')) {
         this.tasks = this.tasks.filter(task => task.id !== id)
-      }
+      // }
+    },
+    toggleReminder(id) {
+      // console.log('Toggle reminder: id)
+      this.tasks = this.tasks.map(task => task.id == id ? {...task, reminder: !task.reminder} : task)
+      // we go through each object in the list, if the current task.id matches the argument id...
+      // ...we use the spread operator syntax to update the reminder property in that object and return it, otherwise...
+      // ...we just return the same unaltered list
     }
   },
   created() {

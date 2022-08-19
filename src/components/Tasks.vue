@@ -1,6 +1,6 @@
 <template>
     <div :key="task.id" v-for="task in tasks">
-        <TaskVue @delete-task="$emit('delete-task', task.id)" :task="task"/>
+        <TaskVue @delete-task="$emit('delete-task', task.id)" @toggle-reminder="$emit('toggle-reminder', task.id)" :task="task"/>
     </div>
 </template>
 
@@ -14,6 +14,6 @@ export default {
     components: {
         TaskVue
     },
-    emits: ['delete-task'] // this is just to get rid of the warning in the console really
+    emits: ['delete-task', 'toggle-reminder'] // this is just to get rid of the warning in the console really
 }
 </script>
