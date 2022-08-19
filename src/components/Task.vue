@@ -14,9 +14,10 @@ export default {
   methods: {
     onDelete(id) {
         // console.log(id)
+        // this is how we execute events to call funcs in parent components with an argument coming from here
         this.$emit('delete-task', id)
         // this defines a new prop event thing called '@delete-task' on this component in the parent component... 
-        // ...where we can call a function defined in it (with this 'ID' argument), or repeat the process upwards to a higher component like we are
+        // ...where we can call a function defined in it (with this 'ID' argument), or repeat the process upwards to call a func in a higher component
     }
   }
 };

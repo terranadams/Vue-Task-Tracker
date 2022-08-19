@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>{{title}}</h1>
-    <ButtonVue text="Add Task" @toggle-add-task="$emit('toggle-add-task')" color="green"/>
+    <ButtonVue :text="showAddTask ? 'Close' : 'Add Task'" @toggle-add-task="$emit('toggle-add-task')" :color="showAddTask ? 'red' : 'green'"/>
     <!-- <ButtonVue text="Update Task" color="blue"/> -->
     <!-- <ButtonVue text="Delete Task" color="red"/> -->
   </header>
@@ -14,7 +14,8 @@ export default {
   name: "HeaderVue",
   // props: ['title']
   props: {
-    title: String
+    title: String,
+    showAddTask: Boolean
   },
   components: {
     ButtonVue

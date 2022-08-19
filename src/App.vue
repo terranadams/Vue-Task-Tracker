@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <HeaderVue title='Task Tracker' @toggle-add-task="toggleAddTask"/>
+    <HeaderVue title='Task Tracker' @toggle-add-task="toggleAddTask" :showAddTask="showAddTask"/> <!-- we're making a showAddTask prop, and passing in the boolean value of whatever the showAddTask variable is-->
     <div v-if="showAddTask">
       <AddTask @add-task='addTask'/>
     </div>
